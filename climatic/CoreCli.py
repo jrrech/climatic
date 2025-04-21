@@ -362,7 +362,7 @@ class CoreCli(object):
         """
         try:
             while True:
-                self.connection.terminal.expect.read_nonblocking(size=1024, timeout=0.1)
+                self.connection.terminal.read_nonblocking(size=1024, timeout=0.1)
         except pexpect.exceptions.TIMEOUT:
             pass
         except pexpect.exceptions.EOF:
