@@ -360,10 +360,13 @@ class CoreCli(object):
 
         @param marker  regex used to identify the start of a command line.
         """
-        # consume all markers since last 'expect'
-        while self.connection.terminal.expect([marker, pexpect.TIMEOUT], timeout=0.01) == 0:
-            continue
-
+        try:
+            while True:
+                self.connection.terminal.expect.read_nonblocking(size=1024, timeout=0.1)
+        except pexpect.exceptions.TIMEOUT:
+            pass
+        except pexpect.exceptions.EOF:
+            pass
 
     def _get_prompt_size(self) -> int:
         """ Returns the prompt size: the number of visible chars from the beginning of the
