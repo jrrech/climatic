@@ -4,7 +4,7 @@ from .Connection import Connection
 
 # Increase the PTY window size to to try to avoid truncating command output
 PTY_WINSIZE_ROWS = 24
-PTY_WINSIZE_COLS = 500
+PTY_WINSIZE_COLS = 1000
 
 SSH_PORT = 22
 
